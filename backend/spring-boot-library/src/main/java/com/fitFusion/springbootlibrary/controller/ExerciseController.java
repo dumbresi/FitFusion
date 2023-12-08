@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin( origins = "http://localhost:5173")
 @RestController
@@ -40,4 +42,14 @@ public class ExerciseController {
 
         return new ResponseEntity<>(exerciseService.getSortedExercisesByDuration(), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/api/exercises/sortByName")
+    public ResponseEntity<List<Exercise>> getSortedExercisesByName() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+
+        return new ResponseEntity<>(exerciseService.getSortedExercisesByName(), headers, HttpStatus.OK);
+    }
+
 }
