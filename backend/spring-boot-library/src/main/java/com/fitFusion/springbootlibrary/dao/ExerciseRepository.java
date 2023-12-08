@@ -10,4 +10,6 @@ import java.util.List;
 public interface ExerciseRepository extends JpaRepository<Exercise, Long>{
 
     List<Exercise> findAll();
+
+    List<Exercise> findAll(Sort sort);
 }

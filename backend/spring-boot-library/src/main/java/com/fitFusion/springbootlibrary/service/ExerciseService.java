@@ -9,11 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ExerciseService {
+public class ExerciseService implements ExerciseServiceInterface {
     @Autowired
     private ExerciseRepository exerciseRepository;
 
     @Transactional
+    @Override
     public List<Exercise> getExercises()  {
         return exerciseRepository.findAll();
     }

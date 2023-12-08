@@ -4,6 +4,7 @@ import com.fitFusion.springbootlibrary.entity.Exercise;
 import com.fitFusion.springbootlibrary.entity.FitnessClass;
 import com.fitFusion.springbootlibrary.service.ExerciseService;
 import com.fitFusion.springbootlibrary.service.FitnessClassService;
+import com.fitFusion.springbootlibrary.service.TimeSortableExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,12 +24,20 @@ import java.util.List;
 public class ExerciseController {
 
     @Autowired
-    private ExerciseService exerciseService;
+    private TimeSortableExerciseService exerciseService;
 
     @GetMapping("/api/exercises")
     public ResponseEntity<List<Exercise>> getExercises() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(exerciseService.getExercises(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/api/exercises/sortByDuration")
+    public ResponseEntity<List<Exercise>> getSortedFitnessClasses() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        return new ResponseEntity<>(exerciseService.getSortedExercisesByDuration(), headers, HttpStatus.OK);
     }
 }
