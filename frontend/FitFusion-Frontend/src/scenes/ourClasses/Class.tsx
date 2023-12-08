@@ -32,7 +32,7 @@ const Exercise = ({ name, intensity, duration, image }: Props1) => {
     bg-primary-500 text-center text-white opacity:0 transition duration-500 hover:opacity-90`;
 
     return (
-        <li className = "relative mx-5 inline-block h-[380px] w-[450px]">
+        <li className = "relative mx-5 inline-block h-[380px] w-[450px] z-0">
         <div className = {overlayStyles}>
             <p className = "text-2xl">{name}</p>
             <p className = "mt-5">{intensity} intensity </p> 
