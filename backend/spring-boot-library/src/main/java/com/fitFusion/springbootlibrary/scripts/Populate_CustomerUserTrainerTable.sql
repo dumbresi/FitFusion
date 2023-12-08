@@ -25,11 +25,31 @@ VALUES (1, 'john_doe', 'password123'),
        (17, 'pilates_pro', 'pilatespass'),
        (18, 'fit_mom', 'fitmomsrock'),
        (19, 'fit_dad', 'fitdadsrule'),
-       (20, 'health_nut', 'nuttyandfit');
+       (20, 'health_nut', 'nuttyandfit'),
+        (21, 'running_free', 'freerunner'),
+        (22, 'weightlifter101', 'liftweights'),
+        (23, 'power_yogi', 'yogipower'),
+        (24, 'crossfit_warrior', 'crossfitpass'),
+        (25, 'hiker_explorer', 'hikingadventures'),
+        (26, 'meditation_master', 'zenmaster'),
+        (27, 'swimming_champ', 'swimmer123'),
+        (28, 'cycling_enthusiast', 'cyclerider'),
+        (29, 'team_sports_fan', 'teamsportsfan'),
+        (30, 'nutrition_guru', 'nutritionist'),
+        (31, 'marathon_runner', 'runlongrunstrong'),
+        (32, 'soccer_star', 'soccerpassion'),
+        (33, 'tennis_pro', 'tennisace'),
+        (34, 'healthy_cook', 'cleancooking'),
+        (35, 'vegetarian_fit', 'veggiepower'),
+        (36, 'vegan_athlete', 'veganpower'),
+        (37, 'mind-body_balance', 'balancepass'),
+        (38, 'trail_running_pro', 'trailrunner'),
+        (39, 'home_workout_hero', 'homeworkouts'),
+        (40, 'outdoor_fitness', 'getfitoutside');
 
 
 -- Insert data into Customer table
-INSERT INTO Customer (userId, fitness_plan_id)
+INSERT INTO Customer (user_Id, fitness_plan_id)
 VALUES (1, 1), -- User ID 1 is associated with FitnessPlan ID 1
        (2, 2),
        (3, 3),
@@ -55,7 +75,7 @@ USE
 `fitfusiondatabase`;
 
 -- Insert data into Trainer table
-INSERT INTO Trainer (userId, wage)
+INSERT INTO Trainer (user_id, wage)
 VALUES (21, 50.0), -- User ID 21 is a trainer with a wage of $50.0
        (22, 45.0),
        (23, 55.0),
