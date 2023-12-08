@@ -54,7 +54,7 @@ CREATE TABLE Trainer
 (
     user_id INT PRIMARY KEY,
     wage DOUBLE NOT NULL,
-    FOREIGN KEY (userId) REFERENCES User (id)
+    FOREIGN KEY (user_id) REFERENCES User (id)
 );
 
 CREATE TABLE fitness_class
