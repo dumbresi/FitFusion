@@ -72,7 +72,7 @@ CREATE TABLE FitnessClassParticipants
     class_id INT,
     user_id  INT,
     PRIMARY KEY (class_id, user_id),
-    FOREIGN KEY (class_id) REFERENCES FitnessClass (class_id),
+    FOREIGN KEY (class_id) REFERENCES fitness_class (class_id),
     FOREIGN KEY (user_id) REFERENCES User (id)
 );
 
