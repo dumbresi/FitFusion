@@ -1,7 +1,7 @@
 USE `fitfusiondatabase`;
 
 -- Insert data into Exercise table
-INSERT INTO Exercise (exerciseId, name, duration, intensity)
+INSERT INTO Exercise (exercise_Id, name, duration, intensity)
 VALUES (1, 'Running', 30, 'High'),
        (2, 'Weight Lifting', 45, 'Medium'),
        (3, 'Yoga', 60, 'Low'),
