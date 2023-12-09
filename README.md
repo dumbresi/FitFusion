@@ -3,25 +3,23 @@
 
 
 ## Professor: Daniel Peters
+## Project Name: FitFusion
+Virtual Health and Fitness Platform
 
-### Requirements
-1. Eclipse or VS Code or IntelliJ.
+A comprehensive virtual health and fitness platform that brings together fitness enthusiasts, trainers, and health-conscious individuals in a dynamic and interactive online environment.
+### UML
+![UML!](FitFusionUML.drawio.png)
+### Tech Stack
+1. SpringBoot for Backend.
+2. ReactJS App for frontend(nodeJS required).
+3. MySQL for database.
 
-Note: If you are using Eclipse, please have git CLI installed on your system or GitHub Desktop to commit the code in this repository
+
 
 ### SetUp Instructions
 1. Please clone the repository on your local system
-2. For Eclipse Import the project as Existing Maven Project, For IntelliJ you can directlty open it using 'Get from VCS'.
-4. All code should be pushed to the main branch
-3. Ensure the GitHub actions are successful post push
+2. Install and start mySQL server on your local machine and run all the scripts in backend/src
+3. For IntelliJ you can just run a springBoot application.
+4. For frontend just change directory, run npm i and run npm start
 
-Submissions will have deadlines, failed GitHub Actions would result in point deductions.
 
-### References
-1. Cloning a Repository: <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>
-2. Any GitHub Setup: Please refer to the Git & GitHub Fundamentals Repository shared to you by your respective TA and refer the README.md section
-
-Please reach out to your respective TA if you need any help in regards with submission/ GitHub
-
-Author:
-- Ruchika Sharma (sharma.ruc@northeastern.edu)
