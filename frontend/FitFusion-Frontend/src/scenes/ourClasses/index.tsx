@@ -53,6 +53,10 @@ const OurClasses = ({ setSelectedPage } : Props) => {
     const images = [image1, image2, image3, image4, image5];
    const baseUrl:string = "http://localhost:8080/api/exercises";
    const [exercises, setExercises] = useState([]);
+    const [sortBy, setSortBy] = useState<"name" | "duration">("name");
+    const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
  useEffect(() =>{
     
     axios.get(baseUrl).then((response)=>{
@@ -60,10 +64,29 @@ const OurClasses = ({ setSelectedPage } : Props) => {
         setExercises(response.data);
     });
  },[]);
-
  if (!exercises) {
-    console.log("okay its null")
- }
+     console.log("okay its null")
+  }
+  const handleSort = (criteria: "name" | "duration") => {
+     setSortBy(criteria);
+     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+      setIsDropdownVisible(false);
+   };
+
+
+  const sortedExercises = [...exercises].sort((a, b) => {
+    const order = sortOrder === "asc" ? 1 : -1;
+
+    if (sortBy === "name") {
+      return order * a.name.localeCompare(b.name);
+    } else if (sortBy === "duration") {
+      return order * (a.duration - b.duration);
+    }
+
+    return 0;
+  });
+
+
     return <section id="ourclasses" className = "w-full bg-primary-100 py-40">
         <motion.div
             onViewportEnter={() => setSelectedPage(SelectedPage.OurClasses)}
@@ -80,7 +103,39 @@ const OurClasses = ({ setSelectedPage } : Props) => {
                 }}
             >
                 <div className = "md:w-3/5">
+                 <div className="flex space-x-4 mb-4 align-end flex-row flex">
+                  <div className="flex flex-row justify-between w-full">
                     <HText>OUR CLASSES</HText>
+
+                                       <div className="relative inline-block ml-auto">
+                                           <button
+                                                     onClick={() => setIsDropdownVisible(!isDropdownVisible)}
+                                                     className="rounded-full bg-secondary-500 p-2 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue"
+                                                   >
+                                                     Sort by {sortBy.charAt(0).toUpperCase() + sortBy.slice(1)}{" "}
+                                                     {sortOrder === "asc" ? "▲" : "▼"}
+                                                   </button>
+                                                   <div
+                                                     className={` absolute right-0 mt-2 w-40 bg-white border rounded-lg overflow-hidden shadow-md z-10 ${
+                                                       isDropdownVisible ? "block" : "hidden"
+                                                     }`}
+                                                   >
+                                                     <button
+                                                       onClick={() => handleSort("name")}
+                                                       className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
+                                                     >
+                                                       Name
+                                                     </button>
+                                                     <button
+                                                       onClick={() => handleSort("duration")}
+                                                       className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
+                                                     >
+                                                       Duration
+                                                     </button>
+                                                   </div>
+                                                 </div>
+                                                 </div>
+                                               </div>
                     <p className = "py-5">
                         Explore a world of fitness possibilities with various classes at our gym. From invigorating cardio sessions to targeted strength training and mind-body practices, our diverse class offerings cater to all fitness levels and preferences. Led by expert instructors in a supportive community, these classes provide a holistic and engaging approach to achieving your wellness goals, ensuring a transformative and enjoyable fitness experience for every member.
                     </p>
@@ -100,7 +155,11 @@ const OurClasses = ({ setSelectedPage } : Props) => {
                 </ul>
             </div>
         </motion.div>
-    </section>;
+
+                         </section>
+
+
+
 };
 
 export default OurClasses;
