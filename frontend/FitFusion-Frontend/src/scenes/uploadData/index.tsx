@@ -75,7 +75,7 @@ const UploadData = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className={inputStyles}>
                 <div className="mb-8 ">
                   <input
