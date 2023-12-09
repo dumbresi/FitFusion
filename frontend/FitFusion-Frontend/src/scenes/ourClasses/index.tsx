@@ -67,24 +67,30 @@ const OurClasses = ({ setSelectedPage } : Props) => {
  if (!exercises) {
      console.log("okay its null")
   }
-  const handleSort = (criteria: "name" | "duration") => {
-     setSortBy(criteria);
-     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-      setIsDropdownVisible(false);
-   };
 
+const handleSort = (criteria: "name" | "duration") => {
+   setSortBy(criteria);
+   setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+   setIsDropdownVisible(false);
 
-  const sortedExercises = [...exercises].sort((a, b) => {
-    const order = sortOrder === "asc" ? 1 : -1;
+   const endpoint = criteria === "name" ? "sortByName" : "sortByDuration";
+   axios.get(`${baseUrl}/${endpoint}`).then((response) => {
+     setExercises(response.data);
+   });
+ };
 
-    if (sortBy === "name") {
-      return order * a.name.localeCompare(b.name);
-    } else if (sortBy === "duration") {
-      return order * (a.duration - b.duration);
-    }
+ const sortedExercises = [...exercises].sort((a, b) => {
+   const order = sortOrder === "asc" ? 1 : -1;
 
-    return 0;
-  });
+   if (sortBy === "name") {
+     return order * a.name.localeCompare(b.name);
+   } else if (sortBy === "duration") {
+     return order * (a.duration - b.duration);
+   }
+
+   return 0;
+ });
+
 
 
     return <section id="ourclasses" className = "w-full bg-primary-100 py-40">
