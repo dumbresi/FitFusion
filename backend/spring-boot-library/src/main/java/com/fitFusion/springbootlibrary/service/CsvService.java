@@ -7,8 +7,12 @@ import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
 
 @Service
 public class CsvService {
@@ -16,21 +20,25 @@ public class CsvService {
     @Autowired
     private CustomerRepository customerRepository;
 
-
     @Transactional
-    public void readAndSaveDataFromCsv(String csvFilePath) throws IOException, CsvException {
-        try (CSVReader reader = new CSVReader(new FileReader(csvFilePath))) {
-            reader.readAll().stream()
-                    .map(row -> {
-                        try {
-                            return new Customer(row[0], row[1]);
-                        } catch (NumberFormatException e) {
-                            System.err.println("Invalid numeric value in CSV: " + e.getMessage());
-                            return null;
-                        }
-                    })
-                    .filter(customer -> customer != null)
-                    .forEach(customerRepository::save);
+    public void readDataFromCsv(MultipartFile csvFile) throws IOException, CsvException {
+        // Read data from CSV file
+        try (CSVReader reader = new CSVReader(new InputStreamReader(csvFile.getInputStream()))) {
+            List<String[]> allRows = reader.readAll();
+
+            // Process each row and save to database
+            for (String[] row : allRows) {
+                // Assuming each row has two columns - for example, name and email
+                String userId = row[0];
+                String fitnessPlanId = row[1];
+                System.out.println("userId: "+userId + " fitnessPlanId: "+fitnessPlanId);
+                // Create a new Customer object
+                Customer customer = new Customer(userId, fitnessPlanId);
+
+                System.out.println("Customer: "+customer);
+                // Save the customer to the database
+                customerRepository.save(customer);
+            }
         }
     }
 }

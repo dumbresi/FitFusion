@@ -6,6 +6,7 @@ import { SelectedPage } from "@/shared/types";
 import Footer from "./scenes/footer";
 import Benefits from "@/scenes/benefits";
 import OurClasses from "@/scenes/ourClasses";
+import UploadData from "./scenes/uploadData";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState(SelectedPage.Home);
@@ -37,6 +38,7 @@ function App() {
       <Benefits setSelectedPage={setSelectedPage} />
       <OurClasses setSelectedPage={setSelectedPage} />
       <ContactUs setSelectedPage={setSelectedPage} />
+      <UploadData setSelectedPage={setSelectedPage} />
       <Footer />
     </div>
   );

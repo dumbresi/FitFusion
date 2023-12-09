@@ -2,7 +2,7 @@ USE
 `fitfusiondatabase`;
 
 -- Insert data into FitnessPlan table
-INSERT INTO FitnessPlan (id, planName, goals)
+    INSERT INTO FitnessPlan (id, planName, goals)
 VALUES (1, 'Weight Loss Plan', 'Cardio, Diet'),
        (2, 'Muscle Gain Plan', 'Weight Lifting, Protein Intake'),
        (3, 'Flexibility Plan', 'Yoga, Stretching'),
